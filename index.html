@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include necessary meta tags, stylesheets, and scripts -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Forge</title>
+    <!-- Include your CSS styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SPA Container -->
+    <div id="fitness_forge_app">
+        <!-- Navigation Bar (if needed) -->
+        <div class="nav_bar"></div>
+        <section class="diet-weight">
+            <h2>Workout Plan Suggestion</h2>
+            <label for="userWeight">Enter your weight:</label>
+            <input type="number" id="userWeight" placeholder="Enter weight in kilograms">
+            <button id="suggestWorkoutBtn">Get Workout Plan</button>
+            <p id="workoutSuggestion"></p>
+        </section>
+
+        <section class="user-profile">
+            <h2>User Profile</h2>
+            <div id="userProfile"></div>
+        </section>
+
+        <section class="workout-log">
+            <h2>Workout Log</h2>
+            <button id="logWorkoutButton">Log Workout</button>
+        </section>
+
+        <section class="customize-workout">
+            <h2>Customize Workout</h2>
+            <button id="customizeWorkoutButton">Customize Workout</button>
+            <div id="customizeWorkout"></div>
+        </section>
+
+        <section class="achievements">
+            <h2>Achievements</h2>
+            <div id="achievements"></div>
+        </section>
+
+        <section class="customized-workout-plan">
+            <h2>Customized Workout Plan</h2>
+            <div id="customizedWorkoutPlan"></div>
+        </section>
+
+        <section class="workout-log-history">
+            <h2>Workout Log History</h2>
+            <div id="workoutLog"></div>
+        </section>
+    </div>
+
+    <!-- Include your JavaScript file -->
+    <script src="script.js"></script>
+    <!-- Include Axios library -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

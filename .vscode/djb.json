@@ -1,0 +1,82 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "username": "john_doe",
+        "fullName": "John Doe",
+        "email": "john@example.com",
+        "weight": 75,
+        "height": 180,
+        "age": 30,
+        "achievements": [1, 2],
+        "workoutPlans": [1]
+      },
+      {
+        "id": 2,
+        "username": "fit_guru",
+        "fullName": "Fit Guru",
+        "email": "guru@example.com",
+        "weight": 65,
+        "height": 170,
+        "age": 25,
+        "achievements": [],
+        "workoutPlans": [2]
+      }
+    ],
+    "workouts": [
+      {
+        "id": 1,
+        "userId": 1,
+        "date": "2023-01-10",
+        "exercise": "Running",
+        "duration": 30,
+        "caloriesBurned": 300
+      },
+      {
+        "id": 2,
+        "userId": 1,
+        "date": "2023-01-12",
+        "exercise": "Weightlifting",
+        "sets": 3,
+        "reps": 12,
+        "caloriesBurned": 200
+      },
+      {
+        "id": 3,
+        "userId": 2,
+        "date": "2023-01-11",
+        "exercise": "Yoga",
+        "duration": 45,
+        "caloriesBurned": 150
+      }
+    ],
+    "achievements": [
+      {
+        "id": 1,
+        "name": "Marathon Runner",
+        "description": "Complete a 5k run",
+        "userId": 1
+      },
+      {
+        "id": 2,
+        "name": "Strength Champion",
+        "description": "Complete a weightlifting session",
+        "userId": 1
+      }
+    ],
+    "workoutPlans": [
+      {
+        "id": 1,
+        "userId": 1,
+        "exerciseType": "Cardio",
+        "intensity": 7
+      },
+      {
+        "id": 2,
+        "userId": 2,
+        "exerciseType": "Strength Training",
+        "intensity": 8
+      }
+    ]
+  }
+  

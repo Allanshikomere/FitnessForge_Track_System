@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: "https://www.pexels.com/photo/an-on-treadmill-1954524/";
+}
+
+#fitness_forge_app {
+    max-width: 600px;
+    margin: 10px auto;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, button, select, #intensity {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 8px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+p {
+    font-style: italic;
+    color: #888;
+}
+
+#userProfile, #achievements, #workoutLog, #customizedWorkoutPlan, #customizeWorkout {
+    border: 1px solid #ddd;
+    padding: 5px;
+    background-color: #f9f9f9;
+}
