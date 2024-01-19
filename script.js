@@ -17,26 +17,49 @@ document.addEventListener('DOMContentLoaded', function () {
     logWorkoutButton.addEventListener('click', logWorkout);
     customizeWorkoutButton.addEventListener('click', customizeWorkout);
 
-    async function suggestWorkout() {
+    function suggestWorkout() {
         const userWeight = parseFloat(weightInput.value);
 
-        // Validate user input
         if (isNaN(userWeight) || userWeight <= 0) {
             suggestionOutput.textContent = 'Please enter a valid weight.';
             return;
         }
 
-        // Generate workout suggestion based on weight using ExerciseDB API
-        const workoutSuggestion = await generateWorkoutPlan(userWeight);
+        // Generate workout suggestion based on weight using custom logic
+        let workoutSuggestion;
+
+        if (userWeight <= 50) {
+            workoutSuggestion = 'Try light cardio exercises like brisk walking and stretching.';
+        } else if (userWeight <= 75) {
+            workoutSuggestion = 'Consider a mix of cardio and strength training, such as jogging and bodyweight exercises.';
+        } else {
+            workoutSuggestion = 'Focus on strength training exercises like weightlifting and high-intensity interval training (HIIT).';
+        }
 
         // Display the suggestion
         suggestionOutput.textContent = `Recommended Workout Plan: ${workoutSuggestion}`;
     }
+    console.log(suggestWorkout);
+    
+    // Assuming this function is part of your script
+    function generateWorkoutBasedOnWeight(userWeight) {
+        let workoutSuggestion = '';
+    
+        if (userWeight <= 50) {
+            workoutSuggestion = 'Try light cardio exercises like brisk walking and stretching.';
+        } else if (userWeight <= 75) {
+            workoutSuggestion = 'Consider a mix of cardio and strength training, such as jogging and bodyweight exercises.';
+        } else {
+            workoutSuggestion = 'Focus on strength training exercises like weightlifting and high-intensity interval training (HIIT).';
+        }
+    
+        return workoutSuggestion;
+    }
+
 
     async function generateWorkoutPlan(userWeight) {
-        // ExerciseDB API to fetch workout suggestion
-        const exerciseDBApiKey = 'your_exercisedb_api_key'; 
-        const exerciseDBApiUrl = `https://exercisedb.p.rapidapi.com/exercises/exercise/${userWeight}`;
+        // const exerciseDBApiKey = 'your_exercisedb_api_key'; 
+        // const exerciseDBApiUrl = `https://exercisedb.p.rapidapi.com/exercises/exercise/${userWeight}`;
 
         try {
             const response = await axios.get(exerciseDBApiUrl, {
@@ -102,47 +125,32 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
     }
 
-    function generateCustomizedWorkout() {
-        // Here I Will Get user preferences from the form
-        const exerciseType = document.getElementById('exerciseType').value;
-        const intensity = document.getElementById('intensity').value;
+    // function generateCustomizedWorkout() {
+    //     // Here I Will Get user preferences from the form
+    //     const exerciseType = document.getElementById('exerciseType').value;
+    //     const intensity = document.getElementById('intensity').value;
 
-        // Plan how will I gustomized work plan for the user basing on the provided preferences
-        const customizedWorkoutPlan = generateWorkoutBasedOnPreferences(exerciseType, intensity);
+    //     // Plan how will I gustomized work plan for the user basing on the provided preferences
+    //     const customizedWorkoutPlan = generateWorkoutBasedOnPreferences(exerciseType, intensity);
 
-        // How to manipilate the  DOM to display the customized workout plan
-        const customizedWorkoutPlanDiv = document.getElementById('customizedWorkoutPlan');
-        customizedWorkoutPlanDiv.innerHTML = `<h4>Your Customized Workout Plan:</h4>
-                                            <p>${customizedWorkoutPlan}</p>`;
-    }
+    //     // How to manipilate the  DOM to display the customized workout plan
+    //     const customizedWorkoutPlanDiv = document.getElementById('customizedWorkoutPlan');
+    //     customizedWorkoutPlanDiv.innerHTML = `<h4>Your Customized Workout Plan:</h4>
+    //                                         <p>${customizedWorkoutPlan}</p>`;
+    // }
 
     //Function for generating workout based preferences based on the user
     function generateWorkoutBasedOnPreferences(exerciseType, intensity) {
         return `For optimal results, focus on ${exerciseType} exercises with an intensity level of ${intensity}.`;
     }
-
-    // How to display the data asynchronusly since it is a singe page application
     async function fetchUserProfile() {
         try {
-            // Simulate fetching user profile data
             const userProfile = await fetchUserData();
             displayUserProfile(userProfile);
         } catch (error) {
             console.error('Error fetching user profile:', error);
         }
     }
-    // async function fetchUserData() {
-    //     // Simulate fetching user data from an API
-    //     // return {
-    //     //     id: 1,
-    //     //     username: ,
-    //     //     email:,
-    //     //     weight: ,
-    //     //     height: ,
-    //     //     age:,
-    //     // };
-    // }
-
     async function fetchAchievementsData() {
         return [
             { name: 'Achievement 1', description: 'Completed 10 workouts' },

@@ -1,11 +1,20 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url("https://www.pexels.com/photo/an-on-treadmill-1954524/");
+    background-image: url('images/pexels-andrea-piacquadio-3775593.jpg');
     text-align: left;
     text-align: initial;
-    background-color: #333;
+    /* background-color: #333; */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.5);
 
 }
 
@@ -54,34 +63,74 @@ p {
     background-color: #f9f9f9;
 }
 .diet-weight {
-    background-color: aqua;
+    background-color: rgb(232, 241, 241);
     /* padding: 0; */
-    margin-left: 10px;
+    /* margin-left: 10px; */
+    height: fit-content;
     box-shadow: #888;
     border: 2px solid grey;
+    display: flex;
+    flex-direction: row;
+    /* margin-right: 60%; */
+    position: absolute;
+    left: 30px;
+    top: 100px;
+    box-shadow: 2px 2px 60px;
+    padding: 15px;
+    width: 400px;
+
+
 }
 .diet-weight:hover {
-    border-color: #ff5b4d;
+    border-color: #eee4e3;
     transform: translateY(-10px);
-    box-shadow: 0 0 10px #ff5b4d ; 
+    box-shadow: 0 0 10px #f0eceb ; 
+    
 }
 
 .workout-log {
     position: absolute;
-    top: 140px;
+    top: 450px;
     left: 90px;
 }
 .logged-workout {
-    background-color: #565151;
+    background-color: #faf1f1;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     position: absolute;
-    top: 140px;
-    left: 90px;
+    top: 480px;
+    left: 200px;
+    color: black;
 }
 .achievements {
     background-color: #888;
     padding: 10px;
 }
+#logWorkoutButton {
+    width: 100px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: transparent;
+    border: 2px solid black;
+}
 
+#logWorkoutButton:hover {
+    background-color: #eee4e3;
+    color: black;
+
+}
+.suggestion-paragraph {
+    /* Your styling properties here */
+    color: black;
+    font-size: 16px;
+    border: 2px solid black;
+    border-style: dotted;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #ddd;
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    opacity: 0.8;
+}

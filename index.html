@@ -11,19 +11,22 @@
 <body>
 
     <!-- SPA Container -->
+    <div class="nav-bar"></div>
     <div id="fitness_forge_app">
         <!-- Navigation Bar (if needed) -->
-        <div class="nav_bar"></div>
         <section class="diet-weight">
             <section class="user-profile">
                 <h2>User Profile</h2>
                 <div id="userProfile"></div>
             </section>
-            <h2>Workout Plan Suggestion</h2>
-            <label for="userWeight">Enter your weight:</label>
-            <input type="number" id="userWeight" placeholder="Enter weight in kilograms">
-            <button id="suggestWorkoutBtn">Get Workout Plan</button>
-            <p id="workoutSuggestion"></p>
+            <div class="workout-suggestion">
+                <h2>Workout Plan Suggestion</h2>
+                <label for="userWeight">Enter your weight:</label>
+                <input type="number" id="userWeight" placeholder="Enter weight in kilograms">
+                <button id="suggestWorkoutBtn" onclick="suggestWorkout()">Get Workout Plan</button>
+                <p id="workoutSuggestion" class="suggestion-paragraph"></p>
+            </div>
+            
         </section>
 
         
@@ -47,7 +50,7 @@
 
         <section class="customized-workout-plan">
             <h2>Customized Workout Plan</h2>
-            <div id="customizedWorkoutPlan"></div>
+            <div id="customizedWorkoutPlan"></div>z
         </section>
 
         <section class="workout-log-history">
