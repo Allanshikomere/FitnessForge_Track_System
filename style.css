@@ -2,12 +2,16 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: "https://www.pexels.com/photo/an-on-treadmill-1954524/";
+    background-image: url("https://www.pexels.com/photo/an-on-treadmill-1954524/");
+    text-align: left;
+    text-align: initial;
+    background-color: #333;
+
 }
 
 #fitness_forge_app {
-    max-width: 600px;
-    margin: 10px auto;
+    max-width: 400px;
+    margin: 5px auto;
 }
 
 section {
@@ -49,3 +53,35 @@ p {
     padding: 5px;
     background-color: #f9f9f9;
 }
+.diet-weight {
+    background-color: aqua;
+    /* padding: 0; */
+    margin-left: 10px;
+    box-shadow: #888;
+    border: 2px solid grey;
+}
+.diet-weight:hover {
+    border-color: #ff5b4d;
+    transform: translateY(-10px);
+    box-shadow: 0 0 10px #ff5b4d ; 
+}
+
+.workout-log {
+    position: absolute;
+    top: 140px;
+    left: 90px;
+}
+.logged-workout {
+    background-color: #565151;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 140px;
+    left: 90px;
+}
+.achievements {
+    background-color: #888;
+    padding: 10px;
+}
+

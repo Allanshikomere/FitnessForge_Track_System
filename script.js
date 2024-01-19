@@ -122,20 +122,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // How to display the data asynchronusly since it is a singe page application
-    async function fetchUserData() {
-        // Simulate fetching user data from an API
-        // return {
-        //     id: 1,
-        //     username: ,
-        //     email:,
-        //     weight: ,
-        //     height: ,
-        //     age:,
-        // };
+    async function fetchUserProfile() {
+        try {
+            // Simulate fetching user profile data
+            const userProfile = await fetchUserData();
+            displayUserProfile(userProfile);
+        } catch (error) {
+            console.error('Error fetching user profile:', error);
+        }
     }
+    // async function fetchUserData() {
+    //     // Simulate fetching user data from an API
+    //     // return {
+    //     //     id: 1,
+    //     //     username: ,
+    //     //     email:,
+    //     //     weight: ,
+    //     //     height: ,
+    //     //     age:,
+    //     // };
+    // }
 
     async function fetchAchievementsData() {
-        // Fetching achievements data from an API
         return [
             { name: 'Achievement 1', description: 'Completed 10 workouts' },
             { name: 'Achievement 2', description: 'Reached fitness milestone' },
@@ -157,19 +165,21 @@ document.addEventListener('DOMContentLoaded', function () {
                                   <p>Age: ${userProfile.age} years</p>`;
     }
 
-    function displayAchievements(achievements) {
-        const achievementsDiv = document.getElementById('achievements');
-        achievementsDiv.innerHTML = achievements.map(
-            (achievement) => `<p>${achievement.name}: ${achievement.description}</p>`
-        ).join('');
-    }
+    function logAchievements(achievements) {
+    console.log('Logged Achievements:');
+    achievements.forEach((achievement, index) => {
+        console.log(`#${index + 1}: ${achievement.name} - ${achievement.description}`);
+    });
+}
 
     function displayLoggedWorkout(workoutData) {
         const workoutLogDiv = document.getElementById('workoutLog');
-        workoutLogDiv.innerHTML = `<h4>Logged Workout:</h4>
+        workoutLogDiv.innerHTML = `<div class="logged-workout">
+                                <h4>Logged Workout:</h4>
                                 <p>Date: ${new Date(workoutData.date).toLocaleDateString()}</p>
                                 <p>Exercise: ${workoutData.exercise}</p>
                                 <p>Duration: ${workoutData.duration} minutes</p>
-                                <p>Calories Burned: ${workoutData.caloriesBurned} kcal</p>`;
+                                <p>Calories Burned: ${workoutData.caloriesBurned} kcal</p>
+                                </div>`;
     }
 });
