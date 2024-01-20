@@ -72,7 +72,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Display the suggestion
-        suggestionOutput.textContent = `Recommended Workout Plan: ${workoutSuggestion}`;
+        suggestionOutput.innerHTML = `
+        <p>Recommended Workout Plan: ${workoutSuggestion}</p>
+        <button id="likeWorkoutButton" onclick="likeWorkout()">
+    <i class='bx bxs-like'></i> Like
+    </button>
+        <span id="likeCount">0</span> Likes
+    `
     }
 
     function updateClock() {
