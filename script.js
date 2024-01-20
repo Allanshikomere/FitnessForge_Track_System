@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
         suggestionOutput.innerHTML = `
         <p>Recommended Workout Plan: ${workoutSuggestion}</p>
         <button id="likeWorkoutButton" onclick="likeWorkout()">
-    <i class='bx bxs-like'></i> Like
+    <i class='bx bxs-like'></i>
     </button>
         <span id="likeCount">0</span> Likes
     `

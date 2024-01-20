@@ -102,6 +102,10 @@ p {
     padding: 20px; /* Padding for the content inside the element */
     box-shadow: 0 0 35px rgba(0, 0, 0, 0.6); 
 }
+.workout-log:hover {
+    border: 2px solid rgb(106, 106, 205);
+    box-shadow:  black ;
+}
 
 .workout-log > h2 {
     color: #eee4e3;
@@ -182,4 +186,13 @@ p {
 }
 .workout-log.h2 {
     color: white;
+}
+
+#likeWorkoutButton {
+    background-color: red;
+    border-radius: 50px;
+
+}
+#likeWorkoutButton:hover {
+    border: 2px solid blue;
 }
