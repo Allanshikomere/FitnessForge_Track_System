@@ -92,12 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
     updateClock();
     
 
-    async function fetchAchievements() {
-        // Simulate fetching user achievements data
-        const achievements = await fetchAchievementsData(); // Assuming you have a function to fetch achievements
-        displayAchievements(achievements);
-    }
-
     function logWorkout() {
         const workoutData = {
             date: new Date().toISOString(),
@@ -111,36 +105,9 @@ document.addEventListener('DOMContentLoaded', function () {
         displayLoggedWorkout(workoutData);
     }
 
-    // function generateCustomizedWorkout() {
-    //     // Get selected values from the form
-    //     const exerciseType = document.getElementById('exerciseType').value;
-    //     const intensity = document.getElementById('intensity').value;
-    
-    //     // Implement workout generation logic based on the selected values
-    //     let workoutPlan = '';
-    
-    //     // Example: Generate a workout plan based on exercise type and intensity
-    //     switch (exerciseType) {
-    //         case 'cardio':
-    //             workoutPlan = `Cardio workout with intensity ${intensity}.`;
-    //             break;
-    //         case 'strength':
-    //             workoutPlan = `Strength training workout with intensity ${intensity}.`;
-    //             break;
-    //         case 'flexibility':
-    //             workoutPlan = `Flexibility exercises with intensity ${intensity}.`;
-    //             break;
-    //         default:
-    //             workoutPlan = 'Invalid exercise type.';
-    //     }
-    
-    //     // Display the generated workout plan
-    //     const customizedWorkoutPlanDiv = document.getElementById('customizedWorkoutPlan');
-    //     customizedWorkoutPlanDiv.innerHTML = `<h3>Your Customized Workout Plan</h3>${workoutPlan}`;
-    // }
 
     function customizeWorkout() {
-        // Implement workout customization logic
+        // workout customization logic
         customizeWorkoutDiv.innerHTML = `
             <h3>Customize Your Workout</h3>
             <form id="workoutCustomizationForm">
@@ -157,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <button type="button" onclick="generateCustomizedWorkout()">Generate Workout Plan</button>
             </form>
             <div id="customizedWorkoutPlan"></div>
-        `;             
+        `;            
     }
 
     async function fetchAchievementsData() {
@@ -172,16 +139,6 @@ document.addEventListener('DOMContentLoaded', function () {
         storedWorkouts.push(workoutData);
         localStorage.setItem('workouts', JSON.stringify(storedWorkouts));
     }
-
-    function displayUserProfile(userProfile) {
-        const userProfileDiv = document.getElementById('userProfile');
-        userProfileDiv.innerHTML = `<p>Username: ${userProfile.username}</p>
-                                  <p>Email: ${userProfile.email}</p>
-                                  <p>Weight: ${userProfile.weight} kg</p>
-                                  <p>Height: ${userProfile.height} cm</p>
-                                  <p>Age: ${userProfile.age} years</p>`;
-    }
-
     function logAchievements(achievements) {
     console.log('Logged Achievements:');
     achievements.forEach((achievement, index) => {
