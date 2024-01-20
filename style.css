@@ -56,11 +56,15 @@ p {
     font-style: italic;
     color: #888;
 }
+.workout-log.h2 {
+    color: #eee4e3;
+}
 
-#userProfile, #achievements, #workoutLog, #customizedWorkoutPlan, #customizeWorkout {
+#userProfile, #achievements, #customizeWorkout {
     border: 1px solid #ddd;
     padding: 5px;
     background-color: #f9f9f9;
+    opacity: 0.5px;
 }
 .diet-weight {
     background-color: rgb(232, 241, 241);
@@ -78,6 +82,7 @@ p {
     box-shadow: 2px 2px 60px;
     padding: 15px;
     width: 400px;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.6);
 
 
 }
@@ -92,6 +97,9 @@ p {
     position: absolute;
     top: 450px;
     left: 90px;
+    background-color: transparent; /* Background color of the element */
+    padding: 20px; /* Padding for the content inside the element */
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.6); 
 }
 .logged-workout {
     background-color: #faf1f1;
@@ -106,6 +114,7 @@ p {
 .achievements {
     background-color: #888;
     padding: 10px;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.6);
 }
 #logWorkoutButton {
     width: 100px;
@@ -133,4 +142,31 @@ p {
     top: 200px;
     left: 100px;
     opacity: 0.8;
+}
+
+#Time {
+    display: inline-block;
+    /* position: absolute;
+    top: 10px; */
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #4f4b4b;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(79, 173, 210, 0.5);
+    letter-spacing: 0.5px;
+}
+.nav-bar {
+    background-color: #333; /* Background color for the navigation bar */
+    color: #fff; /* Text color */
+    padding: 10px; /* Padding around the content */
+    font-family: 'Arial', sans-serif; /* Font family for the text */
+    text-align: center; /* Center the text within the navigation bar */
+    font-size: 18px; /* Font size */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow for depth */
+}
+.workout-log.h2 {
+    color: white;
 }

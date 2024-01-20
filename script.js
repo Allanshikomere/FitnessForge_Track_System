@@ -7,15 +7,50 @@ document.addEventListener('DOMContentLoaded', function () {
     const workoutLogDiv = document.getElementById('workoutLog');
     const customizeWorkoutDiv = document.getElementById('customizeWorkout');
 
-    // Fetch initial data for the user's profile, achievements, etc.
-    fetchUserProfile();
-    fetchAchievements();
-    // ... Other initializations
-
     // Add event listeners for user interactions
     suggestBtn.addEventListener('click', suggestWorkout);
     logWorkoutButton.addEventListener('click', logWorkout);
     customizeWorkoutButton.addEventListener('click', customizeWorkout);
+    getWeatherAndDisplay();
+
+    async function getWeatherAndDisplay() {
+        const city = 'Nairobi'; // Replace with the desired city
+        const weatherData = await getWeather(city);
+
+        if (weatherData) {
+            displayWeather(weatherData);
+        } else {
+            console.error('Failed to fetch weather data.');
+        }
+    }
+
+    async function getWeather(city) {
+        const apiKey = '6410f140e53da5bc4481fe738a152f52';           
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log('Weather Data:', data);
+                return data;
+            } else {
+                console.error('Error:', data.message);
+                return null;
+            }
+        } catch (error) {
+            console.error('Error fetching weather data:', error);
+            return null;
+        }
+    }
+
+    function displayWeather(weatherData) {
+        const temperature = weatherData.main.temp;
+        const description = weatherData.weather[0].description;
+
+        suggestionOutput.textContent = `Current Weather: ${temperature}°C, ${description}`;
+    }
 
     function suggestWorkout() {
         const userWeight = parseFloat(weightInput.value);
@@ -33,57 +68,29 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (userWeight <= 75) {
             workoutSuggestion = 'Consider a mix of cardio and strength training, such as jogging and bodyweight exercises.';
         } else {
-            workoutSuggestion = 'Focus on strength training exercises like weightlifting and high-intensity interval training (HIIT).';
+            workoutSuggestion = 'Focus on strength training exercises like weightlifting and high-intensity interval training.';
         }
 
         // Display the suggestion
         suggestionOutput.textContent = `Recommended Workout Plan: ${workoutSuggestion}`;
     }
-    console.log(suggestWorkout);
-    
-    // Assuming this function is part of your script
-    function generateWorkoutBasedOnWeight(userWeight) {
-        let workoutSuggestion = '';
-    
-        if (userWeight <= 50) {
-            workoutSuggestion = 'Try light cardio exercises like brisk walking and stretching.';
-        } else if (userWeight <= 75) {
-            workoutSuggestion = 'Consider a mix of cardio and strength training, such as jogging and bodyweight exercises.';
-        } else {
-            workoutSuggestion = 'Focus on strength training exercises like weightlifting and high-intensity interval training (HIIT).';
-        }
-    
-        return workoutSuggestion;
+
+    function updateClock() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+
+        const timeString = `${hours}:${minutes}:${seconds}`;
+        document.getElementById('clock').textContent = timeString;
     }
 
+    // Update the clock every second
+    setInterval(updateClock, 1000);
 
-    async function generateWorkoutPlan(userWeight) {
-        // const exerciseDBApiKey = 'your_exercisedb_api_key'; 
-        // const exerciseDBApiUrl = `https://exercisedb.p.rapidapi.com/exercises/exercise/${userWeight}`;
-
-        try {
-            const response = await axios.get(exerciseDBApiUrl, {
-                headers: {
-                    'X-RapidAPI-Key': exerciseDBApiKey,
-                    'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
-                }
-            });
-
-            const suggestedExercise = response.data.name;
-            const suggestedIntensity = response.data.intensity;
-
-            return `Try ${suggestedExercise} with an intensity level of ${suggestedIntensity}.`;
-        } catch (error) {
-            console.error('Error fetching workout suggestion:', error);
-            return 'Unable to fetch workout suggestion at the moment.';
-        }
-    }
-
-    async function fetchUserProfile() {
-        // Simulate fetching user profile data
-        const userProfile = await fetchUserData(); // Assuming you have a function to fetch user data
-        displayUserProfile(userProfile);
-    }
+    // Initial call to set the clock immediately
+    updateClock();
+    
 
     async function fetchAchievements() {
         // Simulate fetching user achievements data
@@ -104,6 +111,34 @@ document.addEventListener('DOMContentLoaded', function () {
         displayLoggedWorkout(workoutData);
     }
 
+    // function generateCustomizedWorkout() {
+    //     // Get selected values from the form
+    //     const exerciseType = document.getElementById('exerciseType').value;
+    //     const intensity = document.getElementById('intensity').value;
+    
+    //     // Implement workout generation logic based on the selected values
+    //     let workoutPlan = '';
+    
+    //     // Example: Generate a workout plan based on exercise type and intensity
+    //     switch (exerciseType) {
+    //         case 'cardio':
+    //             workoutPlan = `Cardio workout with intensity ${intensity}.`;
+    //             break;
+    //         case 'strength':
+    //             workoutPlan = `Strength training workout with intensity ${intensity}.`;
+    //             break;
+    //         case 'flexibility':
+    //             workoutPlan = `Flexibility exercises with intensity ${intensity}.`;
+    //             break;
+    //         default:
+    //             workoutPlan = 'Invalid exercise type.';
+    //     }
+    
+    //     // Display the generated workout plan
+    //     const customizedWorkoutPlanDiv = document.getElementById('customizedWorkoutPlan');
+    //     customizedWorkoutPlanDiv.innerHTML = `<h3>Your Customized Workout Plan</h3>${workoutPlan}`;
+    // }
+
     function customizeWorkout() {
         // Implement workout customization logic
         customizeWorkoutDiv.innerHTML = `
@@ -122,35 +157,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <button type="button" onclick="generateCustomizedWorkout()">Generate Workout Plan</button>
             </form>
             <div id="customizedWorkoutPlan"></div>
-        `;
+        `;             
     }
 
-    // function generateCustomizedWorkout() {
-    //     // Here I Will Get user preferences from the form
-    //     const exerciseType = document.getElementById('exerciseType').value;
-    //     const intensity = document.getElementById('intensity').value;
-
-    //     // Plan how will I gustomized work plan for the user basing on the provided preferences
-    //     const customizedWorkoutPlan = generateWorkoutBasedOnPreferences(exerciseType, intensity);
-
-    //     // How to manipilate the  DOM to display the customized workout plan
-    //     const customizedWorkoutPlanDiv = document.getElementById('customizedWorkoutPlan');
-    //     customizedWorkoutPlanDiv.innerHTML = `<h4>Your Customized Workout Plan:</h4>
-    //                                         <p>${customizedWorkoutPlan}</p>`;
-    // }
-
-    //Function for generating workout based preferences based on the user
-    function generateWorkoutBasedOnPreferences(exerciseType, intensity) {
-        return `For optimal results, focus on ${exerciseType} exercises with an intensity level of ${intensity}.`;
-    }
-    async function fetchUserProfile() {
-        try {
-            const userProfile = await fetchUserData();
-            displayUserProfile(userProfile);
-        } catch (error) {
-            console.error('Error fetching user profile:', error);
-        }
-    }
     async function fetchAchievementsData() {
         return [
             { name: 'Achievement 1', description: 'Completed 10 workouts' },
